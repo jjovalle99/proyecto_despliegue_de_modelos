@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "proyecto despliegue de soluciones analiticas"
+version = "0.1.0"
+description = "ambiente usado para el proyecto de la materia despliegue de soluciones analiticas"
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "~3.10"
+dvc = {extras = ["s3"], version = "^3.27.0"}
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
