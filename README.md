@@ -4,6 +4,7 @@
 Para instalar el gestor de dependencias Poetry:
 ```bash
 pip install poetry
+poetry config virtualenvs.in-project true
 ```
 
 Para instalar el entorno apartir de los archivos `pyproject.toml` y `poetry.lock`
