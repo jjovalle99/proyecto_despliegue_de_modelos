@@ -7,8 +7,10 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "~3.10"
-dvc = {extras = ["s3"], version = "^3.27.0"}
 
+
+[tool.poetry.group.mlops.dependencies]
+dvc = {extras = ["s3"], version = "^3.27.0"}
 
 [build-system]
 requires = ["poetry-core"]
