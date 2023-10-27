@@ -16,3 +16,14 @@ Para activar el entorno
 ```bash
 poetry shell
 ```
+
+# Descargar los datos del remoto
+
+Para descargar los datos de remoto (S3) configurar las credenciales en `~/.aws/credentials` y luego ejecutar:
+```
+dvc pull -r myremote
+```
+En caso de manejar diferentes perfiles de AWS, asegurarse de configuarlo de la siguiente manera:
+```
+export AWS_PROFILE=<nombre del perfil>
+```
