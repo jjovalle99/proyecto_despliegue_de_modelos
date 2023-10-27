@@ -19,7 +19,7 @@ poetry shell
 
 # Descargar los datos del remoto
 
-Para descargar los datos de remoto (S3) configurar las credenciales en `~/.aws/credentials` y luego ejecutar:
+Para descargar los datos desde el remoto (S3) configurar las credenciales en `~/.aws/credentials` y luego ejecutar:
 ```
 dvc pull -r myremote
 ```
