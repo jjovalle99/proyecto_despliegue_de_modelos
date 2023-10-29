@@ -30,7 +30,7 @@ poetry shell
 
 # Descargar los datos desde el remoto (S3)
 Obtenga sus credenciales desde la pagina donde lanza su cuenta de AWS:
-![image](https://github.com/jjovalle99/proyecto_despliegue_de_modelos/assets/70274018/21065571-641f-4b49-83dc-08dd03023331)
+<img width="911" alt="Screenshot 2023-10-29 at 12 33 25 PM" src="https://github.com/jjovalle99/proyecto_despliegue_de_modelos/assets/70274018/a6ad4b22-29fb-4c5b-bda9-5ba767ea5810">
 
 Configure las credenciales de su cuenta de AWS de la siguiente manera:
 ## En Windows
