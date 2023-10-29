@@ -1,4 +1,3 @@
-
 # Cómo instalar el entorno
 
 Para instalar el gestor de dependencias Poetry:
@@ -27,3 +26,9 @@ En caso de manejar diferentes perfiles de AWS, asegurarse de configuarlo de la s
 ```
 export AWS_PROFILE=<nombre del perfil>
 ```
+
+# Arquitectura
+![image](https://github.com/jjovalle99/proyecto_despliegue_de_modelos/assets/70274018/a52c7e3d-c448-483b-b5ca-9b255a73371b)
+
+# Bosquejo del producto final
+![image](https://github.com/jjovalle99/proyecto_despliegue_de_modelos/assets/70274018/427f56e6-3cf2-4cf4-8342-988d4358ac60)
