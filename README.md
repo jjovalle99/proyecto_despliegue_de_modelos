@@ -61,3 +61,6 @@ usando `export AWS_PROFILE=<nombre del perfil>` (en macOS y Linux) o `set AWS_PR
 
 # Bosquejo del producto final
 ![image](https://github.com/jjovalle99/proyecto_despliegue_de_modelos/assets/70274018/427f56e6-3cf2-4cf4-8342-988d4358ac60)
+
+# URL Dashboard LookerStudio (Trabajo en progreso)
+https://lookerstudio.google.com/reporting/208f117c-8536-47ba-9ec2-d963f357dfa1
