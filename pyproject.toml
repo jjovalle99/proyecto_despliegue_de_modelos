@@ -9,7 +9,7 @@ authors = [
     "Gabriel Bolanos <g.bolanos@uniandes.edu.co>"
 ]
 readme = "README.md"
-packages = [{include = 'src'}]
+packages = [{include = "src"}]
 repository = "https://github.com/jjovalle99/proyecto_despliegue_de_modelos"
 
 [tool.poetry.dependencies]
@@ -44,3 +44,7 @@ pytest = "^7.4.3"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+
+[tool.flake8]
+ignore="W291"
