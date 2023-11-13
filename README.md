@@ -64,3 +64,7 @@ usando `export AWS_PROFILE=<nombre del perfil>` (en macOS y Linux) o `set AWS_PR
 
 # URL Dashboard LookerStudio (Trabajo en progreso)
 https://lookerstudio.google.com/reporting/208f117c-8536-47ba-9ec2-d963f357dfa1
+
+# Servidor Mlflow: http://100.26.39.17:5000/
+![image](https://github.com/jjovalle99/proyecto_despliegue_de_modelos/assets/70274018/51f98b74-5f23-4bb7-8a9c-a821e849f89c)
+
