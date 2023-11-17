@@ -1,8 +1,9 @@
+from typing import Tuple
+
 import pandas as pd
-from sklearn.model_selection import train_test_split
 from sklearn.base import BaseEstimator
 from sklearn.compose import make_column_transformer
-from typing import Tuple
+from sklearn.model_selection import train_test_split
 
 from src.logger import log
 
@@ -36,8 +37,9 @@ def read_data(path: str) -> pd.DataFrame:
     return data
 
 
-def split_dataset(data: pd.DataFrame, target: str, test_size: float = 0.2, seed: int = 1399
-                  ) -> Tuple[pd.DataFrame, pd.DataFrame, pd.Series, pd.Series]:
+def split_dataset(
+    data: pd.DataFrame, target: str, test_size: float = 0.2, seed: int = 1399
+) -> Tuple[pd.DataFrame, pd.DataFrame, pd.Series, pd.Series]:
     """
     Primero se separan los datos en `X` y `y`, luego se separan en datos de entrenamiento y
     prueba.
@@ -60,16 +62,22 @@ def split_dataset(data: pd.DataFrame, target: str, test_size: float = 0.2, seed:
     return X_train, X_test, y_train, y_test
 
 
-def categorical_encoding(encoder: BaseEstimator, X_train: pd.DataFrame, X_test: pd.DataFrame,
-                         verbose: int = 1, n_jobs: int = -1
-                         ) -> Tuple[pd.DataFrame, pd.DataFrame, BaseEstimator]:
+def categorical_encoding(
+    encoder: BaseEstimator,
+    X_train: pd.DataFrame,
+    X_test: pd.DataFrame,
+    verbose: int = 1,
+    n_jobs: int = -1,
+) -> Tuple[pd.DataFrame, pd.DataFrame, BaseEstimator]:
     """
     Dado un encoder, se transforman las columnas categóricas de los datos de entrenamiento y
     prueba.
     """
     log.info("Transformando columnas categóricas ...")
     # Se obtienen los nombres de las columnas categóricas
-    categorical_columns_list = X_train.select_dtypes(include="category").columns.to_list()
+    categorical_columns_list = X_train.select_dtypes(
+        include="category"
+    ).columns.to_list()
 
     # Se construye un `ColumnTransformer` que transforma las columnas categóricas
     transformer = make_column_transformer(

@@ -1,7 +1,8 @@
+from typing import Any
+
 import mlflow
 import numpy as np
 import pandas as pd
-from typing import Any
 
 from src.logger import log
 

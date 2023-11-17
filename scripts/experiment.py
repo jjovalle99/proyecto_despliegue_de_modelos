@@ -4,7 +4,7 @@ import mlflow
 import mlflow.xgboost
 import xgboost as xgb
 
-from src.data import read_data, split_dataset, categorical_encoding
+from src.data import categorical_encoding, read_data, split_dataset
 from src.logger import log
 
 TRACKING_SERVER_HOST = "http://100.26.39.17:5000"
@@ -24,19 +24,18 @@ def main(path, label, test_size, seed, experiment_name, nfold):
     data_url = dvc.api.get_url(path=path, remote="myremote")
 
     data = read_data(path)
-    X_train, X_test, y_train, y_test = split_dataset(data=data, target=label,
-                                                     test_size=test_size,
-                                                     seed=seed)
+    X_train, X_test, y_train, y_test = split_dataset(
+        data=data, target=label, test_size=test_size, seed=seed
+    )
 
     # <preprocesamiento>
-    from sklearn.preprocessing import OrdinalEncoder
     import numpy as np
-    encoder = OrdinalEncoder(
-        handle_unknown='use_encoded_value',
-        unknown_value=np.nan
+    from sklearn.preprocessing import OrdinalEncoder
+
+    encoder = OrdinalEncoder(handle_unknown="use_encoded_value", unknown_value=np.nan)
+    X_train, X_test, transformer = categorical_encoding(
+        encoder=encoder, X_train=X_train, X_test=X_test
     )
-    X_train, X_test, transformer = categorical_encoding(encoder=encoder, X_train=X_train,
-                                                        X_test=X_test)
     # </preprocesamiento>
 
     enable_categorical = (
@@ -74,7 +73,7 @@ def main(path, label, test_size, seed, experiment_name, nfold):
             }
         )
         # <log preprocesamiento>
-        mlflow.log_param('encoder', 'OrdinalEncoder')
+        mlflow.log_param("encoder", "OrdinalEncoder")
         mlflow.sklearn.log_model(transformer, "category_transformer")
         # </log preprocesamiento>
 
