@@ -19,6 +19,7 @@ python = "~3.10"
 [tool.poetry.group.mlops.dependencies]
 dvc = {extras = ["s3"], version = "^3.27.0"}
 mlflow = "^2.7.1"
+pydantic = "<2.0"
 
 
 [tool.poetry.group.ml.dependencies]
