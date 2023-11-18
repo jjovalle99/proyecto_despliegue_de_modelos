@@ -22,6 +22,26 @@ def load_model_from_mlflow(run_id: str, model_name: str = "model") -> Any:
     return model
 
 
+def load_preprocessing_step_from_mlflow(
+    run_id: str, preprocessing_name: str = "category_transformer"
+) -> Any:
+    """
+    Se carga un modelo desde Mlflow.
+    """
+    log.info(
+        f"Cargando modelo de preprocesamiento [{preprocessing_name}] \
+            del run [{run_id}] desde Mlflow ..."
+    )
+    try:
+        model_uri = f"runs:/{run_id}/{preprocessing_name}"
+        transformer = mlflow.sklearn.load_model(model_uri)
+    except Exception as e:
+        log.error(f"Error al cargar modelo desde Mlflow: {e}")
+        raise
+
+    return transformer
+
+
 def generate_predictions_model_mlflow(model: Any, data: pd.DataFrame) -> np.ndarray:
     """
     Se generan predicciones con un modelo cargado desde Mlflow.
