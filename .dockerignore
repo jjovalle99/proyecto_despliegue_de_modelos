@@ -6,7 +6,6 @@
 ./scripts/
 ./tests/
 ./webapp/
-./.dvcignore
 ./.flake8
 ./.gitignore
 ./.python-version
