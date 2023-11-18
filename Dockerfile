@@ -1,15 +1,37 @@
-FROM python:3.10.13-slim
+FROM python:3.10.13-slim AS builder
 
-ENV POETRY_VIRTUALENVS_CREATE=false
+RUN pip install poetry==1.6.1 --no-cache-dir
+
+ENV POETRY_VIRTUALENVS_IN_PROJECT=1 \
+    POETRY_VIRTUALENVS_CREATE=1 
 
 WORKDIR /proyecto
 
-COPY ./ ./
+COPY pyproject.toml poetry.lock ./
+RUN touch README.md
 
-RUN touch README.md && \
-pip install poetry==1.6.1 --no-cache-dir && \
-poetry install --no-interaction --no-ansi --no-cache \
---without mlops --without ml --without dev --without test
+RUN poetry install --no-interaction \
+--no-ansi \
+--no-cache \
+--no-root \
+--without mlops \
+--without ml \
+--without dev \
+--without test 
+
+FROM python:3.10.13-slim AS runtime
+
+ENV VIRTUAL_ENV=/proyecto/.venv \
+    PATH="/proyecto/.venv/bin:$PATH"
+
+COPY --from=builder ${VIRTUAL_ENV} ${VIRTUAL_ENV}
+
+RUN useradd -M user
+USER user
+
+WORKDIR /proyecto
+
+COPY --chown=user ./  ./ 
 
 EXPOSE 1399
 

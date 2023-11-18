@@ -12,3 +12,4 @@
 ./diccionario.txt
 ./Makefile
 ./README.md
+*__pycache__/
