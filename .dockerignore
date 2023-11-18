@@ -1,0 +1,15 @@
+./.git/
+./.dvc/
+./.venv/
+./data/
+./notebooks/
+./scripts/
+./tests/
+./webapp/
+./.dvcignore
+./.flake8
+./.gitignore
+./.python-version
+./diccionario.txt
+./Makefile
+./README.md
