@@ -3,6 +3,7 @@ from pathlib import Path
 import mlflow
 import pandas as pd
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 from src.logger import log
 from src.model import generate_predictions_model_mlflow
@@ -11,6 +12,14 @@ from src.schema import Input, Prediction
 MODELS_PATH = Path.cwd() / "models"
 
 app = FastAPI(title="Prediccion de precios de casas.", version="0.1.0")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Permite todas las origenes
+    allow_credentials=True,
+    allow_methods=["*"],  # Permite todos los métodos
+    allow_headers=["*"],  # Permite todos los headers
+)
 
 
 @app.get("/")
