@@ -35,4 +35,4 @@ COPY --chown=user ./  ./
 
 EXPOSE 1399
 
-ENTRYPOINT [ "uvicorn", "app.api:app", "--host", "0.0.0.0", "--port", "1399"]
+ENTRYPOINT [ "uvicorn", "app.api:app", "--host", "0.0.0.0", "--port", "1399", "--header", "access-control-allow-origin:*"]
