@@ -170,7 +170,6 @@ class Input(BaseModel):
                 "MoSold": 2,
                 "YrSold": 2008,
                 "SaleType": "WD",
-                "SaleCondition": "Normal",
-                "SalePrice": 208500,
+                "SaleCondition": "Normal"
             }
         }
