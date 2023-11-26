@@ -1,89 +1,30 @@
 function enviarFormulario() {
+    var Neighborhood = document.getElementById('Neighborhood').value;
     var OverallQual = document.getElementById('OverallQual').value;
     var OverallCond = document.getElementById('OverallCond').value;
-    var YearBuilt = document.getElementById('YearBuilt').value;
-    var TotalBsmtSF = document.getElementById('TotalBsmtSF').value;
+    var BldgType = document.getElementById('BldgType').value;
+    var RoofMatl = document.getElementById('RoofMatl').value;
     var GarageCars = document.getElementById('GarageCars').value;
-    var GarageArea = document.getElementById('GarageArea').value;
-    var FirstFlrSF = document.getElementById('FirstFlrSF').value;
-    var SecondFlrSF = document.getElementById('SecondFlrSF').value;
+    var BsmtQual = document.getElementById('BsmtQual').value;
+    var BsmtFinSF1 = document.getElementById('BsmtFinSF1').value;
+    var TotalBsmtSF = document.getElementById('TotalBsmtSF').value;
+    var GrLivArea = document.getElementById('GrLivArea').value;
+    var KitchenQual = document.getElementById('KitchenQual').value;
+    var GarageType = document.getElementById('GarageType').value;
 
     var data_ejemplo_consumo_api = {
-      "MSSubClass": 60,
-      "MSZoning": "RL",
-      "LotFrontage": 65,
-      "LotArea": 8450,
-      "Street": "Pave",
-      "LotShape": "Reg",
-      "LandContour": "Lvl",
-      "Utilities": "AllPub",
-      "LotConfig": "Inside",
-      "LandSlope": "Gtl",
-      "Neighborhood": "CollgCr",
-      "Condition1": "Norm",
-      "Condition2": "Norm",
-      "BldgType": "1Fam",
-      "HouseStyle": "2Story",
+      "Neighborhood": Neighborhood,
+      "BldgType": BldgType,
       "OverallQual": OverallQual,
       "OverallCond": OverallCond,
-      "YearBuilt": YearBuilt,
-      "YearRemodAdd": 2003,
-      "RoofStyle": "Gable",
-      "RoofMatl": "CompShg",
-      "Exterior1st": "VinylSd",
-      "Exterior2nd": "VinylSd",
-      "MasVnrType": "BrkFace",
-      "MasVnrArea": 196,
-      "ExterQual": "Gd",
-      "ExterCond": "TA",
-      "Foundation": "PConc",
-      "BsmtQual": "Gd",
-      "BsmtCond": "TA",
-      "BsmtExposure": "No",
-      "BsmtFinType1": "GLQ",
-      "BsmtFinSF1": 706,
-      "BsmtFinType2": "Unf",
-      "BsmtFinSF2": 0,
-      "BsmtUnfSF": 150,
+      "RoofMatl": RoofMatl,
+      "BsmtQual": BsmtQual,
+      "BsmtFinSF1": BsmtFinSF1,
       "TotalBsmtSF": TotalBsmtSF,
-      "Heating": "GasA",
-      "HeatingQC": "Ex",
-      "CentralAir": "Y",
-      "Electrical": "SBrkr",
-      "1stFlrSF": FirstFlrSF,
-      "2ndFlrSF": SecondFlrSF,
-      "LowQualFinSF": 0,
-      "GrLivArea": 1710,
-      "BsmtFullBath": 1,
-      "BsmtHalfBath": 0,
-      "FullBath": 2,
-      "HalfBath": 1,
-      "BedroomAbvGr": 3,
-      "KitchenAbvGr": 1,
-      "KitchenQual": "Gd",
-      "TotRmsAbvGrd": 8,
-      "Functional": "Typ",
-      "Fireplaces": 0,
-      "GarageType": "Attchd",
-      "GarageYrBlt": 2003,
-      "GarageFinish": "RFn",
-      "GarageCars": GarageCars,
-      "GarageArea": GarageArea,
-      "GarageQual": "TA",
-      "GarageCond": "TA",
-      "PavedDrive": "Y",
-      "WoodDeckSF": 0,
-      "OpenPorchSF": 61,
-      "EnclosedPorch": 0,
-      "3SsnPorch": 0,
-      "ScreenPorch": 0,
-      "PoolArea": 0,
-      "MiscVal": 0,
-      "MoSold": 2,
-      "YrSold": 2008,
-      "SaleType": "WD",
-      "SaleCondition": "Normal",
-      "SalePrice": 208500
+      "GrLivArea": GrLivArea,
+      "KitchenQual": KitchenQual,
+      "GarageType": GarageType,
+      "GarageCars": GarageCars
     };
 
     var xhr = new XMLHttpRequest();
@@ -98,7 +39,7 @@ function enviarFormulario() {
         console.log('Respuesta del servidor:', json);
         var respuesta = document.getElementById('respuesta');
         // Accede a la propiedad 'prediction' y toma el primer elemento del array
-        var valor = json.prediction[0];
+        var valor = json.prediction;
         respuesta.value = '$ ' + valor.toLocaleString('en-US') + ' USD';
       }
     };

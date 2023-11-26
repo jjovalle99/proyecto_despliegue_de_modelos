@@ -14,63 +14,137 @@
       <a href="modelo.html">MODELO</a>
       <a href="metrics.html">METRICAS</a>
     </div>
-    <h1 style="text-align: center;">🏠 Predicción de Precios de Casas 🏠</h1>
-    <div class="container">
-      <form onsubmit="event.preventDefault(); enviarFormulario();">
-        <div class="columna">
-          <label for="OverallQual">Condición de los Acabados:</label><br>
-          <select id="OverallQual" name="OverallQual">
-            <option value="1">1	Very Poor</option>
-            <option value="2">2	Poor</option>
-            <option value="3">3	Fair</option>
-            <option value="4">4	Below Average</option>
-            <option value="5">5	Average</option>
-            <option value="6">6	Above Average</option>
-            <option value="7">7	Good</option>
-            <option value="8">8	Very Good</option>
-            <option value="9">9	Excellent</option>
-            <option value="10">10	Very Excellent</option>
-          </select>
-          <label for="YearBuilt">Año de Construcción:</label><br>
-          <input type="number" id="YearBuilt" name="YearBuilt" required><br>
-          <label for="GarageArea">Metros Cuadrados del Garaje:</label><br>
-          <input type="number" id="GarageArea" name="GarageArea" required><br>
-          <label for="FirstFlrSF">Metros Cuadrados del Primer Piso:</label><br>
-          <input type="number" id="FirstFlrSF" name="FirstFlrSF" required><br>
-        </div>
-        <div class="columna">
-          <label for="OverallCond">Condición General de la Casa:</label><br>
-          <select id="OverallCond" name="OverallCond">
-            <option value="1">1	Very Poor</option>
-            <option value="2">2	Poor</option>
-            <option value="3">3	Fair</option>
-            <option value="4">4	Below Average</option>
-            <option value="5">5	Average</option>
-            <option value="6">6	Above Average</option>
-            <option value="7">7	Good</option>
-            <option value="8">8	Very Good</option>
-            <option value="9">9	Excellent</option>
-            <option value="10">10	Very Excellent</option>
-          </select>
-          <label for="TotalBsmtSF">Metros Cuadrados del Sótano:</label><br>
-          <input type="number" id="TotalBsmtSF" name="TotalBsmtSF" required><br>
-          <label for="GarageCars">Capacidad de Carros en Garaje:</label><br>
-          <input type="number" id="GarageCars" name="GarageCars" required><br>
-          <label for="SecondFlrSF">Metros Cuadrados del Segundo Piso:</label><br>
-          <input type="number" id="SecondFlrSF" name="SecondFlrSF" required><br>
-        </div>
-      </form>
-    </div>
-    <div>
-      <button id="calcular">Calcular</button>
-      <label for="respuesta">Valor en USD:</label><br>
-      <input class="respuesta" style="width: 20%;" type="text" id="respuesta" name="respuesta" readonly><br><br>
-    </div>
-    <br><br>
-    <div class="seccion-abajo">  
-      <h3 style="text-align: left; margin: 10px 0 10px 20px;">Documentación del Modelo Apificado:</h3>
-      <a class="columna enlace-documentacion" href="http://ec2-3-227-189-106.compute-1.amazonaws.com:1399/docs" target="_blank">Link</a>
-      <img class="logo-openapi" src="./images/openAPILogo.png" alt="Logo de OpenAPI">
-    </div>
+    <div class="content">    
+      <h1 style="text-align: center;">🏠 Predicción de Precios de Casas 🏠</h1>
+      <div class="container">
+        <form onsubmit="event.preventDefault(); enviarFormulario();">
+          <div class="columna">
+            <label for="OverallQual">Condición de los Acabados:</label><br>
+            <select id="OverallQual" name="OverallQual">
+              <option value="1">1	Very Poor</option>
+              <option value="2">2	Poor</option>
+              <option value="3">3	Fair</option>
+              <option value="4">4	Below Average</option>
+              <option value="5">5	Average</option>
+              <option value="6">6	Above Average</option>
+              <option value="7">7	Good</option>
+              <option value="8">8	Very Good</option>
+              <option value="9">9	Excellent</option>
+              <option value="10">10	Very Excellent</option>
+            </select>
+            <label for="Neighborhood">Barrio:</label><br>
+            <select id="Neighborhood" name="Neighborhood">
+              <option value="Blmngtn">Bloomington Heights</option>
+              <option value="Blueste">Bluestem</option>
+              <option value="BrDale">Briardale</option>
+              <option value="BrkSide">Brookside</option>
+              <option value="ClearCr">Clear Creek</option>
+              <option value="CollgCr">College Creek</option>
+              <option value="Crawfor">Crawford</option>
+              <option value="Edwards">Edwards</option>
+              <option value="Gilbert">Gilbert</option>
+              <option value="IDOTRR">Iowa DOT and Rail Road</option>
+              <option value="MeadowV">Meadow Village</option>
+              <option value="Mitchel">Mitchell</option>
+              <option value="Names">North Ames</option>
+              <option value="NoRidge">Northridge</option>
+              <option value="NPkVill">Northpark Villa</option>
+              <option value="NridgHt">Northridge Heights</option>
+              <option value="NWAmes">Northwest Ames</option>
+              <option value="OldTown">Old Town</option>
+              <option value="SWISU">South & West of Iowa State University</option>
+              <option value="Sawyer">Sawyer</option>
+              <option value="SawyerW">Sawyer West</option>
+              <option value="Somerst">Somerset</option>
+              <option value="StoneBr">Stone Brook</option>
+              <option value="Timber">Timberland</option>
+              <option value="Veenker">Veenker</option>
+            </select>
+            <label for="RoofMatl">Material del Tejado:</label><br>
+            <select id="RoofMatl" name="RoofMatl">
+              <option value="ClyTile">Clay or Tile</option>
+              <option value="CompShg">Standard (Composite) Shingle</option>
+              <option value="Membran">Membrane</option>
+              <option value="Metal">Metal</option>
+              <option value="Roll">Roll</option>
+              <option value="Tar&Grv">Gravel & Tar</option>
+              <option value="WdShake">Wood Shakes</option>
+              <option value="WdShngl">Wood Shingles</option>
+            </select>
+            
+            <label for="KitchenQual">Calidad de la Cocina:</label><br>
+            <select id="KitchenQual" name="KitchenQual">
+              <option value="Ex">Excellent</option>
+              <option value="Gd">Good</option>
+              <option value="TA">Typical/Average</option>
+              <option value="Fa">Fair</option>
+              <option value="Po">Poor</option>
+            </select>
+            <label for="GarageType">Tipo de Garage:</label><br>
+            <select id="GarageType" name="GarageType">
+              <option value="2Types">More than one type of garage</option>
+              <option value="Attchd">Attached to home</option>
+              <option value="Basment">Basement Garage</option>
+              <option value="BuiltIn">Built-In (Garage part of house - typically has room above garage)</option>
+              <option value="CarPort">Car Port</option>
+              <option value="Detchd">Detached from home</option>
+              <option value="NA">No Garage</option>
+            </select>
+            <label for="BsmtFinSF1">Pies Cuadrados del Sotano Tipo 1:</label><br>
+            <input type="number" id="BsmtFinSF1" name="BsmtFinSF1" required><br>
+          </div>
+          <div class="columna">
+            <label for="OverallCond">Condición General de la Casa:</label><br>
+            <select id="OverallCond" name="OverallCond">
+              <option value="1">1	Very Poor</option>
+              <option value="2">2	Poor</option>
+              <option value="3">3	Fair</option>
+              <option value="4">4	Below Average</option>
+              <option value="5">5	Average</option>
+              <option value="6">6	Above Average</option>
+              <option value="7">7	Good</option>
+              <option value="8">8	Very Good</option>
+              <option value="9">9	Excellent</option>
+              <option value="10">10	Very Excellent</option>
+            </select>
+            <label for="BldgType">Tipo de Vivienda:</label><br>
+            <select id="BldgType" name="BldgType">
+              <option value="1Fam">Single-family Detached</option>
+              <option value="2FmCon">Two-family Conversion; originally built as one-family dwelling</option>
+              <option value="Duplx">Duplex</option>
+              <option value="TwnhsE">Townhouse End Unit</option>
+              <option value="TwnhsI">Townhouse Inside Unit</option>
+            </select>
+            <label for="BsmtQual">Evalua la Altura del Sotano:</label><br>
+            <select id="BsmtQual" name="BsmtQual">
+              <option value="Ex">Excellent (100+ inches)</option>
+              <option value="Gd">Good (90-99 inches)</option>
+              <option value="TA">Typical (80-89 inches)</option>
+              <option value="Fa">Fair (70-79 inches)</option>
+              <option value="Po">Poor (less than 70 inches)</option>
+              <option value="NA">No Basement</option>
+            </select>
+            
+            <label for="GrLivArea">Superficie Habitable en ft2:</label><br>
+            <input type="number" id="GrLivArea" name="GrLivArea" required><br>
+            <label for="GarageCars">Tamaño de Garage en Coches:</label><br>
+            <input type="number" id="GarageCars" name="GarageCars" required><br>
+            <label for="TotalBsmtSF">Total de Pies Cuadrados del Sotano:</label><br>
+            <input type="number" id="TotalBsmtSF" name="TotalBsmtSF" required><br>
+          </div>
+        </form>
+      </div>
+      <div>
+        <button id="calcular">Calcular</button>
+        <label for="respuesta">Valor en USD:</label><br>
+        <input class="respuesta" style="width: 20%;" type="text" id="respuesta" name="respuesta" readonly><br><br>
+      </div>
+      <br><br>
+      <div class="seccion-abajo">  
+        <h3 style="text-align: left; margin: 10px 0 10px 20px;">Documentación del Modelo Apificado:</h3>
+        <a class="columna enlace-documentacion" href="http://ec2-3-227-189-106.compute-1.amazonaws.com:1399/docs" target="_blank">Link</a>
+        <img class="logo-openapi" src="./images/openAPILogo.png" alt="Logo de OpenAPI">
+      </div>
+  </div>
   </body>
 </html>
