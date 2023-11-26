@@ -5,14 +5,72 @@
     <title>Modelo</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="script.js"></script>
   </head>
   <body>
-     <!-- Encabezado con botones de navegación -->
-     <div class="header">
-        <a href="index.html">Home</a>
-        <a href="modelo.html">Modelo</a>
-        <a href="metrics.html">Metrics</a>
+    <!-- Encabezado con botones de navegación -->
+    <div class="header">
+      <a href="index.html">DASHBOARD</a>
+      <a href="modelo.html">MODELO</a>
+      <a href="metrics.html">METRICAS</a>
     </div>
-    <h1>Proximamente...</h1>
+    <h1 style="text-align: center;">🏠 Predicción de Precios de Casas 🏠</h1>
+    <div class="container">
+      <form onsubmit="event.preventDefault(); enviarFormulario();">
+        <div class="columna">
+          <label for="OverallQual">Condición de los Acabados:</label><br>
+          <select id="OverallQual" name="OverallQual">
+            <option value="1">1	Very Poor</option>
+            <option value="2">2	Poor</option>
+            <option value="3">3	Fair</option>
+            <option value="4">4	Below Average</option>
+            <option value="5">5	Average</option>
+            <option value="6">6	Above Average</option>
+            <option value="7">7	Good</option>
+            <option value="8">8	Very Good</option>
+            <option value="9">9	Excellent</option>
+            <option value="10">10	Very Excellent</option>
+          </select>
+          <label for="YearBuilt">Año de Construcción:</label><br>
+          <input type="number" id="YearBuilt" name="YearBuilt" required><br>
+          <label for="GarageArea">Metros Cuadrados del Garaje:</label><br>
+          <input type="number" id="GarageArea" name="GarageArea" required><br>
+          <label for="FirstFlrSF">Metros Cuadrados del Primer Piso:</label><br>
+          <input type="number" id="FirstFlrSF" name="FirstFlrSF" required><br>
+        </div>
+        <div class="columna">
+          <label for="OverallCond">Condición General de la Casa:</label><br>
+          <select id="OverallCond" name="OverallCond">
+            <option value="1">1	Very Poor</option>
+            <option value="2">2	Poor</option>
+            <option value="3">3	Fair</option>
+            <option value="4">4	Below Average</option>
+            <option value="5">5	Average</option>
+            <option value="6">6	Above Average</option>
+            <option value="7">7	Good</option>
+            <option value="8">8	Very Good</option>
+            <option value="9">9	Excellent</option>
+            <option value="10">10	Very Excellent</option>
+          </select>
+          <label for="TotalBsmtSF">Metros Cuadrados del Sótano:</label><br>
+          <input type="number" id="TotalBsmtSF" name="TotalBsmtSF" required><br>
+          <label for="GarageCars">Capacidad de Carros en Garaje:</label><br>
+          <input type="number" id="GarageCars" name="GarageCars" required><br>
+          <label for="SecondFlrSF">Metros Cuadrados del Segundo Piso:</label><br>
+          <input type="number" id="SecondFlrSF" name="SecondFlrSF" required><br>
+        </div>
+      </form>
+    </div>
+    <div>
+      <button id="calcular">Calcular</button>
+      <label for="respuesta">Valor en USD:</label><br>
+      <input class="respuesta" style="width: 20%;" type="text" id="respuesta" name="respuesta" readonly><br><br>
+    </div>
+    <br><br>
+    <div class="seccion-abajo">  
+      <h3 style="text-align: left; margin: 10px 0 10px 20px;">Documentación del Modelo Apificado:</h3>
+      <a class="columna enlace-documentacion" href="http://ec2-3-227-189-106.compute-1.amazonaws.com:1399/docs" target="_blank">Link</a>
+      <img class="logo-openapi" src="./images/openAPILogo.png" alt="Logo de OpenAPI">
+    </div>
   </body>
 </html>

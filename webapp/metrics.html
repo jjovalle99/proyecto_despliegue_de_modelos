@@ -5,14 +5,55 @@
     <title>Metrics</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+      .center-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 30vh;
+      }
+
+      h1 {
+        color: #2272b4;
+        margin-bottom: 20px;
+      }
+
+      .mlflow-link {
+        display: inline-block;
+        padding: 12px 24px;
+        font-size: 20px;
+        color: white;
+        background-color: #2272b4;
+        border-radius: 4px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+      }
+
+      .mlflow-link:hover {
+        background-color: #0b3574;
+      }
+
+      .mlflow-image {
+        right: 40px;
+        top: 40px;
+        width: 200px; 
+        height: auto; 
+      }
+    </style>
   </head>
   <body>
-     <!-- Encabezado con botones de navegación -->
-     <div class="header">
-        <a href="index.html">Home</a>
-        <a href="modelo.html">Modelo</a>
-        <a href="metrics.html">Metrics</a>
+    <!-- Encabezado con botones de navegación -->
+    <div class="header">
+      <a href="index.html">DASHBOARD</a>
+      <a href="modelo.html">MODELO</a>
+      <a href="metrics.html">METRICAS</a>
     </div>
-    <h1>Proximamente...</h1>
+    <div class="center-content">
+      <h1>Accede a nuestras métricas de experimentos:</h1>
+      <a class="mlflow-link" href="http://ec2-100-26-39-17.compute-1.amazonaws.com:5000/" target="_blank">Abrir MLFlow en nueva pestaña</a>
+      <h3>Powered by:</h1>
+      <img class="mlflow-image" src="./images/MLflow_logo.png" alt="Imagen de MLFlow">
+    </div>
   </body>
 </html>
