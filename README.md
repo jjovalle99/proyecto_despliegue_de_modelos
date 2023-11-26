@@ -69,4 +69,5 @@ https://lookerstudio.google.com/reporting/208f117c-8536-47ba-9ec2-d963f357dfa1
 ![image](https://github.com/jjovalle99/proyecto_despliegue_de_modelos/assets/70274018/51f98b74-5f23-4bb7-8a9c-a821e849f89c)
 
 # Modelo de predicciones hosteado: http://ec2-3-227-189-106.compute-1.amazonaws.com:1399/docs
-![image](https://github.com/jjovalle99/proyecto_despliegue_de_modelos/assets/70274018/429aa79d-0bda-480e-a43f-dbe20edf8a74)
+![image](https://github.com/jjovalle99/proyecto_despliegue_de_modelos/assets/70274018/50291c93-9a02-49c2-974d-356d17c03ca3)
+
