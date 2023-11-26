@@ -2,9 +2,11 @@ import click
 import dvc.api
 import mlflow
 import mlflow.xgboost
+import pandas as pd
+import numpy as np
 import xgboost as xgb
 
-from src.data import categorical_encoding, read_data, split_dataset
+from src.data import read_data, split_dataset
 from src.logger import log
 
 TRACKING_SERVER_HOST = "http://100.26.39.17:5000"
@@ -22,19 +24,37 @@ mlflow.xgboost.autolog(importance_types=["gain"], model_format="json")
 @click.option("--nfold", "-n", default=5)
 def main(path, label, test_size, seed, experiment_name, nfold):
     data_url = dvc.api.get_url(path=path, remote="myremote")
+    feature_selector = [
+        'Neighborhood', 'BldgType', 'OverallQual', 'OverallCond',
+        'RoofMatl', 'BsmtQual', 'BsmtFinSF1', 'TotalBsmtSF', 'GrLivArea',
+        'KitchenQual', 'GarageType', 'GarageCars'
+    ]
 
     data = read_data(path)
+
     X_train, X_test, y_train, y_test = split_dataset(
         data=data, target=label, test_size=test_size, seed=seed
     )
+    y_train, y_test = np.log(y_train), np.log(y_test)
+    X_train, X_test = X_train[feature_selector], X_test[feature_selector]
 
     # <preprocesamiento>
-    import numpy as np
-    from sklearn.preprocessing import OrdinalEncoder
+    from category_encoders import TargetEncoder
+    from sklearn.impute import KNNImputer
+    from sklearn.pipeline import make_pipeline
 
-    encoder = OrdinalEncoder(handle_unknown="use_encoded_value", unknown_value=np.nan)
-    X_train, X_test, transformer = categorical_encoding(
-        encoder=encoder, X_train=X_train, X_test=X_test
+    encoder = TargetEncoder()
+    imputer = KNNImputer(n_neighbors=10, weights='distance')
+    featurizer = make_pipeline(encoder, imputer)
+    featurizer.fit(X_train, y_train)
+
+    X_train = pd.DataFrame(
+        featurizer.transform(X_train),
+        columns=featurizer.get_feature_names_out()
+    )
+    X_test = pd.DataFrame(
+        featurizer.transform(X_test),
+        columns=featurizer.get_feature_names_out()
     )
     # </preprocesamiento>
 
@@ -56,12 +76,18 @@ def main(path, label, test_size, seed, experiment_name, nfold):
 
     with mlflow.start_run(experiment_id=1, run_name=experiment_name) as run:
         params = {
-            "eta": 0.01,
+            "max_depth": 70,
+            "min_child_weight": 1.5481359796122345,
+            "reg_alpha": 1e-05,
+            "reg_lambda": 1,
+            'gamma': 0.018107780248991318,
+            'colsample_bytree': 0.6,
+            'subsample': 0.6,
+            'eta': 0.056536933784715235,
             "objective": "reg:squarederror",
             "tree_method": "hist",
             "device": "cuda",
             "eval_metric": ["rmse", "mae"],
-            # "nthread": 24,
             "verbosity": 1,
             "seed": seed,
         }
@@ -74,7 +100,7 @@ def main(path, label, test_size, seed, experiment_name, nfold):
         )
         # <log preprocesamiento>
         mlflow.log_param("encoder", "OrdinalEncoder")
-        mlflow.sklearn.log_model(transformer, "category_transformer")
+        mlflow.sklearn.log_model(featurizer, "category_transformer")
         # </log preprocesamiento>
 
         log.info(f"Realizando CV (folds={nfold}) ... ")
