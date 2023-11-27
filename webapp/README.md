@@ -23,9 +23,14 @@ sudo apt-get update
 
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
+Es importante además asegurarse que el Security Group permita una regla de entrada TCP por el PUERTO 8000 desde cualquier origen IPv4.
 
 ### Desplegar Aplicacion Web:
 ```bash
+git clone https://github.com/jjovalle99/proyecto_despliegue_de_modelos.git
+
+cd proyecto_despliegue_de_modelos/webapp
+
 sudo docker build -t webapp:latest .
 
 sudo docker run -p 8000:8000 -it webapp
