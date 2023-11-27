@@ -1,0 +1,30 @@
+artifact_path: model
+flavors:
+  python_function:
+    data: model.json
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.xgboost
+    python_version: 3.10.13
+  xgboost:
+    code: null
+    data: model.json
+    model_class: xgboost.core.Booster
+    model_format: json
+    xgb_version: 2.0.1
+mlflow_version: 2.8.0
+model_size_bytes: 342609
+model_uuid: 4c8bda22dccf40698fe124600a303bd9
+run_id: 9c7cce6b226c49c5b68373eae7268047
+signature:
+  inputs: '[{"type": "double", "name": "Neighborhood"}, {"type": "double", "name":
+    "BldgType"}, {"type": "double", "name": "OverallQual"}, {"type": "double", "name":
+    "OverallCond"}, {"type": "double", "name": "RoofMatl"}, {"type": "double", "name":
+    "BsmtQual"}, {"type": "double", "name": "BsmtFinSF1"}, {"type": "double", "name":
+    "TotalBsmtSF"}, {"type": "double", "name": "GrLivArea"}, {"type": "double", "name":
+    "KitchenQual"}, {"type": "double", "name": "GarageType"}, {"type": "double", "name":
+    "GarageCars"}]'
+  outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "float32", "shape": [-1]}}]'
+  params: null
+utc_time_created: '2023-11-26 21:17:22.534110'
